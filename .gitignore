@@ -10,6 +10,7 @@ contracts/artifacts/
 contracts/cache/
 artifacts/*.json
 artifacts/*.txt
+artifacts/*.png
 .DS_Store
 .cursor/
 .vscode/
