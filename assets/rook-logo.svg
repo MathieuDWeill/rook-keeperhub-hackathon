@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180" role="img" aria-label="Rook logo">
+  <rect width="640" height="180" rx="28" fill="#0b0f14"/>
+  <path d="M54 42h72v22h-12v19h15v55H51V83h15V64H54z" fill="#f5f7fa"/>
+  <path d="M73 42v22h34V42M68 96h44v27H68z" fill="#0b0f14"/>
+  <text x="160" y="116" font-family="Arial, Helvetica, sans-serif" font-size="84" font-weight="700" fill="#f5f7fa">ROOK</text>
+</svg>

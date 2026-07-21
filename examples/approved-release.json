@@ -1,0 +1,17 @@
+{
+  "project_id": "12345678-1234-5678-1234-567812345678",
+  "milestone_id": "roof-complete",
+  "amount_minor": 3000000000,
+  "token": "USDC",
+  "recipient": "0x1111111111111111111111111111111111111111",
+  "escrow_contract": "0x2222222222222222222222222222222222222222",
+  "client_accepted": true,
+  "invoice_verified": true,
+  "compliance_clear": true,
+  "dispute_open": false,
+  "retention_bps": 500,
+  "evidence": [
+    {"kind":"signed_acceptance","uri":"ipfs://acceptance","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","verified":true},
+    {"kind":"invoice","uri":"ipfs://invoice","sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","verified":true}
+  ]
+}
