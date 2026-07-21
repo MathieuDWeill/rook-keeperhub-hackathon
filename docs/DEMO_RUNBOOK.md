@@ -4,7 +4,7 @@
 1. `make quality`
 2. `make live-preflight`
 3. Confirm the escrow has enough MockUSDC.
-4. Confirm the KeeperHub organization wallet has `EXECUTOR_ROLE` and testnet gas.
+4. Confirm the derived KeeperHub organization wallet has `EXECUTOR_ROLE` and testnet gas.
 5. Clear Streamlit state and close unrelated tabs.
 
 ## 90-second path

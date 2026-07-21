@@ -11,6 +11,8 @@ contracts/cache/
 artifacts/*.json
 artifacts/*.txt
 .DS_Store
+.cursor/
+.vscode/
 
 # Generated Python bytecode
 __pycache__/

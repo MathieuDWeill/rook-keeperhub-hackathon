@@ -13,15 +13,17 @@ KEEPERHUB_API_KEY=kh_...
 KEEPERHUB_MODE=live
 ```
 
-## 2. Obtain the KeeperHub executor wallet
+## 2. KeeperHub executor wallet
 
-The organization wallet that sends direct-execution transactions must receive `EXECUTOR_ROLE` in the escrow contract. Set:
+The organization wallet that sends Direct Execution transactions must receive `EXECUTOR_ROLE` in the escrow contract. By default, `make deploy` derives this address from a strict KeeperHub `simulate: true` request and grants it in the constructor.
+
+Only set this optional override if KeeperHub support gives you a specific sender address:
 
 ```dotenv
 KEEPERHUB_EXECUTOR_ADDRESS=0x...
 ```
 
-The deployment script grants that address the role in the constructor.
+The deployment script grants the derived or overridden address the role in the constructor.
 
 ## 3. Prepare Sepolia deployment values
 
@@ -45,13 +47,7 @@ make test
 make deploy
 ```
 
-The script deploys `MockUSDC`, deploys `RookEscrow`, mints test tokens, approves, and funds the escrow. It writes `artifacts/deployment.json`.
-
-Copy the emitted escrow address into `.env`:
-
-```dotenv
-ESCROW_CONTRACT_ADDRESS=0x...
-```
+The script deploys `MockUSDC`, deploys `RookEscrow`, mints test tokens, approves, and funds the escrow. It writes `mockUsdc` and `escrow` to `artifacts/deployment.json`; `make live-preflight` and `make run-demo` read those addresses automatically.
 
 ## 5. Verify connectivity
 

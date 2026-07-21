@@ -30,10 +30,10 @@ quality: preflight lint typecheck test coverage smoke
 	. .venv/bin/activate && python scripts/export_openapi.py
 
 run-api:
-	. .venv/bin/activate && uvicorn apps.api.app.main:app --reload --port 8000
+	set -a; source .env; set +a; . .venv/bin/activate && uvicorn apps.api.app.main:app --reload --port 8000
 
 run-demo:
-	. .venv/bin/activate && streamlit run apps/demo/app.py
+	set -a; source .env; set +a; . .venv/bin/activate && streamlit run apps/demo/app.py
 
 contracts:
 	cd contracts && npm run compile

@@ -6,7 +6,10 @@ import subprocess
 import sys
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 ROOT = Path(__file__).resolve().parents[1]
+load_dotenv(ROOT / ".env")
 checks = []
 
 
@@ -21,6 +24,13 @@ def run(cmd):
 
 def is_generated(path):
     return bool({".git", ".venv", "__pycache__", "node_modules"} & set(path.parts))
+
+
+def json_file(path):
+    try:
+        return json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError):
+        return {}
 
 
 required = [
@@ -63,13 +73,29 @@ else:
 
 required_live = [
     "KEEPERHUB_API_KEY",
-    "KEEPERHUB_EXECUTOR_ADDRESS",
     "RPC_URL",
     "DEPLOYER_PRIVATE_KEY",
     "ARTISAN_ADDRESS",
 ]
 missing = [k for k in required_live if not os.getenv(k)]
 add("live-secrets", not missing, "configured" if not missing else "missing: " + ", ".join(missing))
+
+deployment = json_file(ROOT / "artifacts/deployment.json")
+deployment_ok = bool(deployment.get("escrow") and deployment.get("mockUsdc"))
+add(
+    "live-deployment",
+    deployment_ok,
+    "deployment.json has escrow and mockUsdc" if deployment_ok else "missing deployed escrow/mockUsdc",
+)
+
+proof = json_file(ROOT / "artifacts/live-proof.json")
+execution = proof.get("execution") or {}
+proof_ok = bool(execution.get("execution_id") and execution.get("tx_hash") and execution.get("explorer_url"))
+add(
+    "live-transaction-proof",
+    proof_ok,
+    "execution id, transaction hash and explorer link saved" if proof_ok else "missing live KeeperHub transaction proof",
+)
 summary = {
     "ready_for_local_demo": all(
         c["ok"] for c in checks if c["check"] not in {"solidity-tests", "live-secrets"}

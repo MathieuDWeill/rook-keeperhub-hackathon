@@ -16,16 +16,17 @@ Populate `.env` with:
 - `KEEPERHUB_API_KEY` — organization key beginning `kh_`;
 - `RPC_URL` — Ethereum Sepolia RPC;
 - `DEPLOYER_PRIVATE_KEY` — testnet-only deployment key;
-- `KEEPERHUB_EXECUTOR_ADDRESS` — the KeeperHub organization wallet used by Direct Execution;
 - `ARTISAN_ADDRESS` — testnet recipient.
 
 Never copy these values into source, logs, screenshots or commits.
+
+`KEEPERHUB_EXECUTOR_ADDRESS` is optional: when it is absent, deployment derives the KeeperHub organization wallet from a Direct Execution dry-run simulation and grants that wallet `EXECUTOR_ROLE`.
 
 ## Live completion
 
 1. Confirm Sepolia is enabled in KeeperHub and the organization wallet has test ETH.
 2. Run `make deploy`.
-3. Copy `escrow` from `artifacts/deployment.json` into `ESCROW_CONTRACT_ADDRESS`.
+3. `artifacts/deployment.json` records `mockUsdc` and `escrow`; later live commands read those addresses automatically.
 4. Set `KEEPERHUB_MODE=live`.
 5. Run `make live-preflight`.
 6. Start `make run-api` and `make run-demo` in separate terminals.

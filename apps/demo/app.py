@@ -1,5 +1,7 @@
 import hashlib
+import json
 import os
+from pathlib import Path
 
 import requests
 import streamlit as st
@@ -9,8 +11,15 @@ st.title("Rook")
 st.caption("Evidence-gated construction payments, executed reliably through KeeperHub")
 
 api = os.getenv("API_BASE_URL", "http://localhost:8000")
+deployment_path = Path("artifacts/deployment.json")
+deployment = {}
+if deployment_path.is_file():
+    try:
+        deployment = json.loads(deployment_path.read_text())
+    except json.JSONDecodeError:
+        deployment = {}
 default_recipient = os.getenv("ARTISAN_ADDRESS", "0x" + "1" * 40)
-default_contract = os.getenv("ESCROW_CONTRACT_ADDRESS", "0x" + "2" * 40)
+default_contract = os.getenv("ESCROW_CONTRACT_ADDRESS") or deployment.get("escrow", "0x" + "2" * 40)
 mode = os.getenv("KEEPERHUB_MODE", "stub").lower()
 
 

@@ -99,8 +99,6 @@ Interactive API documentation is available at `http://localhost:8000/docs`.
 
 ```bash
 make deploy
-# copy artifacts/deployment.json -> escrow into ESCROW_CONTRACT_ADDRESS
-# set KEEPERHUB_MODE=live
 make live-preflight
 make run-api
 make run-demo
