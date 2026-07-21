@@ -6,11 +6,15 @@ __pycache__/
 .ruff_cache/
 .coverage
 contracts/node_modules/
+scripts/video/node_modules/
 contracts/artifacts/
 contracts/cache/
 artifacts/*.json
 artifacts/*.txt
 artifacts/*.png
+artifacts/*.mp4
+artifacts/*.webm
+artifacts/video/
 .DS_Store
 .cursor/
 .vscode/

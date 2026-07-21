@@ -1,0 +1,19 @@
+Rook secures construction milestone payments.
+
+In a renovation project, the client wants protection against paying too early, while the artisan needs reliable payment once the work is accepted.
+
+This demo shows Kitchen renovation, Phase 1. The milestone is three thousand USDC. Today, two thousand eight hundred fifty USDC can be released, while one hundred fifty USDC remains protected as retention.
+
+Rook first checks the evidence. Client acceptance is verified. The invoice is verified. Compliance is clear. There is no dispute, and completion photos are attached.
+
+Then Rook applies a deterministic payment policy. If every control passes, the payment is approved. If a required proof is missing, no blockchain transaction is attempted.
+
+The approved release has already been executed through KeeperHub on Sepolia. KeeperHub simulated the exact contract call, confirmed it would not revert, submitted the transaction, and returned the authoritative audit trail.
+
+Here are the live proof fields: the KeeperHub execution ID, the transaction hash, gas used, timestamp, audit status, and the explorer link.
+
+Now we test the safety path. When client acceptance is missing, Rook blocks the payment before execution. This is not a failure; it is the product doing its job.
+
+Rook gives construction teams a simple rule: pay when the evidence is complete, protect retention, and keep a verifiable KeeperHub execution record for every release.
+
+Rook. Secure milestone payments for construction. Executed through KeeperHub.

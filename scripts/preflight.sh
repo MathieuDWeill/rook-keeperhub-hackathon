@@ -15,5 +15,9 @@ find . -type f -size +20M \
   -not -path './.git/*' \
   -not -path './.venv/*' \
   -not -path './contracts/node_modules/*' \
+  -not -path './scripts/video/node_modules/*' \
+  -not -path './artifacts/video/*' \
+  -not -path './artifacts/*.mp4' \
+  -not -path './artifacts/*.webm' \
   -print | grep . && { echo "Large files found"; fail=1; } || true
 exit "$fail"
